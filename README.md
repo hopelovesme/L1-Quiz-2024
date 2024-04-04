@@ -82,7 +82,7 @@ def one_question():
 
 
 round_count = 1
-
+# number of questions
 round_count = int(input("How many questions would you like?\n"))
 print("The amount of questions you chose will be {}".format(round_count))
 
