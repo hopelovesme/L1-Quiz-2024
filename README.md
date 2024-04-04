@@ -35,7 +35,7 @@ def instructions():
 
 instructions()
 
-# question_types
+# question types
 all_question_types = ["+", "-", "x", "/"]
 
 score = 0
@@ -49,7 +49,8 @@ final_question_count = 0
 def int_checker(question):
     while True:
         try:
-            return int(input(question))
+            user_answer = float(input(question))
+            return user_answer
         except:
             print("Please enter a valid number")
 
@@ -72,9 +73,9 @@ def one_question():
         correct_answer = first_number / second_number
     correct_answer = round(correct_answer, 1)
     question = int_checker("What is {} {} {}? (please round to one decimal place)\n".format(first_number, question_types, second_number))
-    user_answer = float(input(question))
-    user_answer = round(user_answer, 1)
-    if user_answer == round(correct_answer, 1):
+
+    question = round(question, 1)
+    if question == round(correct_answer, 1):
         print("Correct!")
         score += 1
     else:
