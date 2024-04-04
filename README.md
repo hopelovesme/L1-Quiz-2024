@@ -33,24 +33,8 @@ def instructions():
             print("Please choose a valid response (yes or no)")
 
 
-# numOfproblems
-def numOfproblems():
-    print("Before you start, how many questions would you like to answer in your quiz?")
-    numberOfProblems = input()
-    numberOfProblems = int(numberOfProblems)
+instructions()
 
-    if numberOfProblems > 20:
-        print("Sorry, that is too many questions for this quiz :( please chose a number lower than 20! ")
-        numOfproblems()
-        return
-    if numberOfProblems < 4:
-        print("That is not enough questions! Please chose a number higher than 4!")
-        return
-    else:
-        print(f"okay! {numberOfProblems} it is!")
-
-
-numOfproblems()
 # question_types
 all_question_types = ["+", "-", "x", "/"]
 
@@ -69,25 +53,25 @@ def int_checker(question):
         except:
             print("Please enter a valid number")
 
+
 # main
 def one_question():
     global question_types, score
     question_types = random.choice(all_question_types)
     first_number = random.randrange(1, 20)
     second_number = random.randrange(1, 20)
-    correct_answer = 0.0
+    correct_answer = 0
 
     if question_types == "+":
         correct_answer = first_number + second_number
     elif question_types == "-":
         correct_answer = first_number - second_number
-    elif question_types == "*":
+    elif question_types == "x":
         correct_answer = first_number * second_number
     elif question_types == "/":
         correct_answer = first_number / second_number
     correct_answer = round(correct_answer, 1)
-    question = "What is {} {} {}? (please round to one decimal place)\n".format(first_number, question_types,
-                                                                                second_number)
+    question = int_checker("What is {} {} {}? (please round to one decimal place)\n".format(first_number, question_types, second_number))
     user_answer = float(input(question))
     user_answer = round(user_answer, 1)
     if user_answer == round(correct_answer, 1):
@@ -97,7 +81,13 @@ def one_question():
         print(f"Incorrect :( ------- The correct answer was {correct_answer}")
 
 
-one_question()
+round_count = 1
+
+round_count = int(input("How many questions would you like?\n"))
+print("The amount of questions you chose will be {}".format(round_count))
+
+for round_number in range(round_count):
+    one_question()
 # results
 print("---------------------------")
 print("---------RESULTS-----------")
@@ -105,5 +95,5 @@ print("---------------------------")
 
 print(f"you're score is {score}%")
 print("Well done!!!")
-print(f"You Got {score} / {final_question_count} correct!")
+print(f"You Got {score} / {round_count} correct!")
 print("Thank you for playing!!!!!!!!!!")
