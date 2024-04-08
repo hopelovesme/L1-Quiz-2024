@@ -7,13 +7,13 @@ name = input("What what is your name?\n")
 print(f"Hello {name}!")
 
 
+# instructions
 def instructions():
     while True:
         want_instructions = input(f"Would you like to read the instructions {name}? (Please enter yes or no)").lower()
         if want_instructions == "no" or want_instructions == "n":
             print("You chose no")
             input("-Press enter to start-")
-            againAndAgain()
             return
 
         elif want_instructions == "yes" or want_instructions == "y":
@@ -27,38 +27,15 @@ def instructions():
                 "questions you got correct or incorrect (You may go back through the quiz if you wish) ",
                 "GOOD LUCK ON YOUR QUIZ!!!!!")
             input("-Please press enter to start-")
-            againAndAgain()
             return
 
         else:
             print("Please choose a valid response (yes or no)")
 
 
-def againAndAgain():
-    pass
-
-
-againAndAgain()
-
-
-def againAndAgain():
-    print("Before you start, how many questions would you like to answer in your quiz?")
-    numberOfProblems = input()
-    numberOfProblems = int(numberOfProblems)
-
-    if numberOfProblems > 20:
-        print("Sorry, that is too many questions for this quiz :( please chose a number lower than 20! ")
-        againAndAgain()
-        return
-    if numberOfProblems < 4:
-        print("That is not enough questions! Please chose a number higher than 4!")
-        return
-    else:
-        print(f"okay! {numberOfProblems} it is!")
-
-
 instructions()
 
+# question types
 all_question_types = ["+", "-", "x", "/"]
 
 score = 0
@@ -72,44 +49,52 @@ final_question_count = 0
 def int_checker(question):
     while True:
         try:
-            return int(input(question))
+            user_answer = float(input(question))
+            return user_answer
         except:
             print("Please enter a valid number")
 
 
+# main
 def one_question():
     global question_types, score
     question_types = random.choice(all_question_types)
     first_number = random.randrange(2, 20)
     second_number = random.randrange(2, 20)
-    correct_answer = 0.0
+    correct_answer = 0
 
     if question_types == "+":
         correct_answer = first_number + second_number
     elif question_types == "-":
         correct_answer = first_number - second_number
-    elif question_types == "*":
+    elif question_types == "x":
         correct_answer = first_number * second_number
     elif question_types == "/":
         correct_answer = first_number / second_number
     correct_answer = round(correct_answer, 1)
-    question = "What is {} {} {}? (please round to one decimal place)\n".format(first_number, question_types,
-                                                                                second_number)
-    user_answer = float(input(question))
-    user_answer = round(user_answer, 1)
-    if user_answer == round(correct_answer, 1):
+    question = int_checker("What is {} {} {}? (please round to one decimal place)\n".format(first_number, question_types, second_number))
+
+    question = round(question, 1)
+    if question == round(correct_answer, 1):
         print("Correct!")
         score += 1
     else:
         print(f"Incorrect :( ------- The correct answer was {correct_answer}")
 
 
-againAndAgain()
+round_count = 1
+# number of questions
+round_count = int(input("How many questions would you like?\n"))
+print("The amount of questions you chose will be {}".formaat(round_count))
+
+for round_number in range(round_count):
+    one_question()
+# results
 print("---------------------------")
 print("---------RESULTS-----------")
 print("---------------------------")
 
 print(f"you're score is {score}%")
 print("Well done!!!")
-print(f"You Got {score} / {final_question_count} correct!")
+print(f"You Got {score} / {round_count} correct!")
 print("Thank you for playing!!!!!!!!!!")
