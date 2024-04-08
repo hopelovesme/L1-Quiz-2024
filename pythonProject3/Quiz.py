@@ -62,8 +62,8 @@ instructions()
 all_question_types = ["+", "-", "x", "/"]
 
 score = 0
-num1 = random.randrange(1, 20)
-num2 = random.randrange(1, 20)
+num1 = random.randrange(2, 20)
+num2 = random.randrange(2, 20)
 question_number = 0
 question_count = 0
 final_question_count = 0
@@ -80,8 +80,8 @@ def int_checker(question):
 def one_question():
     global question_types, score
     question_types = random.choice(all_question_types)
-    first_number = random.randrange(1, 20)
-    second_number = random.randrange(1, 20)
+    first_number = random.randrange(2, 20)
+    second_number = random.randrange(2, 20)
     correct_answer = 0.0
 
     if question_types == "+":
