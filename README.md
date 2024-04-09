@@ -55,14 +55,14 @@ def int_checker(question):
             print("Please enter a valid number")
 
 
-# main
+
 def one_question():
     global question_types, score
     question_types = random.choice(all_question_types)
-    first_number = random.randrange(1, 20)
-    second_number = random.randrange(1, 20)
+    first_number = random.randrange(2, 20)
+    second_number = random.randrange(2, 20)
     correct_answer = 0
-
+# main
     if question_types == "+":
         correct_answer = first_number + second_number
     elif question_types == "-":
@@ -83,7 +83,7 @@ def one_question():
 
 
 round_count = 1
-# number of questions
+
 round_count = int(input("How many questions would you like?\n"))
 print("The amount of questions you chose will be {}".format(round_count))
 
