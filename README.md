@@ -85,7 +85,7 @@ def one_question():
 round_count = 1
 
 round_count = int(input("How many questions would you like?\n"))
-print("The amount of questions you chose will be {}".formaat(round_count))
+print("The amount of questions you chose will be {}".format(round_count))
 
 for round_number in range(round_count):
     one_question()
