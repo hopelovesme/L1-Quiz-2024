@@ -24,7 +24,7 @@ def instructions():
                 "2) In the Quiz there will be a variety of different basic math questions (either +, -, /, * )",
                 "the symbols '/' means division and '*' means multiplication",
                 "3) once you've answered all of your questions you will be given a score out of 100% and you will be able to see what ",
-                "questions you got correct or incorrect ",
+                "questions you got correct or incorrect (You may go back through the quiz if you wish) ",
                 "GOOD LUCK ON YOUR QUIZ!!!!!")
             input("-Please press enter to start-")
             return
@@ -55,20 +55,20 @@ def int_checker(question):
             print("Please enter a valid number")
 
 
-
+# main
 def one_question():
     global question_types, score
     question_types = random.choice(all_question_types)
     first_number = random.randrange(2, 20)
     second_number = random.randrange(2, 20)
     correct_answer = 0
-# main
+
     if question_types == "+":
         correct_answer = first_number + second_number
     elif question_types == "-":
         correct_answer = first_number - second_number
     elif question_types == "x":
-        correct_answer = first_number x second_number
+        correct_answer = first_number * second_number
     elif question_types == "/":
         correct_answer = first_number / second_number
     correct_answer = round(correct_answer, 1)
@@ -85,7 +85,7 @@ def one_question():
 round_count = 1
 
 round_count = int(input("How many questions would you like?\n"))
-print("The amount of questions you chose will be {}".format(round_count))
+print("The amount of questions you chose will be {}".formaat(round_count))
 
 for round_number in range(round_count):
     one_question()
