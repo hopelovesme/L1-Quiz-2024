@@ -57,7 +57,7 @@ def int_checker(question):
 
 # main
 def one_question():
-    global question_types, score
+    global question_types, score, question_count
     question_types = random.choice(all_question_types)
     first_number = random.randrange(2, 20)
     second_number = random.randrange(2, 20)
@@ -78,11 +78,10 @@ def one_question():
     if question == round(correct_answer, 1):
         print("Correct!")
         score += 1
+        question_count += 1
     else:
         print(f"Incorrect :( ------- The correct answer was {correct_answer}")
-
-
-round_count = 1
+        question_count += 1
 
 round_count = int(input("How many questions would you like?\n"))
 print("The amount of questions you chose will be {}".format(round_count))
@@ -90,11 +89,13 @@ print("The amount of questions you chose will be {}".format(round_count))
 for round_number in range(round_count):
     one_question()
 
+percentage = round(score / question_count * 100, 1)
+
 print("---------------------------")
 print("---------RESULTS-----------")
 print("---------------------------")
 
-print(f"you're score is {score}%")
+print(f"your score is {percentage}%")
 print("Well done!!!")
 print(f"You Got {score} / {round_count} correct!")
 print("Thank you for playing!!!!!!!!!!")
