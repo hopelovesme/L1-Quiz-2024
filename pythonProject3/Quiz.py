@@ -1,13 +1,15 @@
 import random
 
+# Main introduction for code
 print("+-=Math Quiz=-+")
 print("Welcome to the Maths Quiz!")
 name = input("What is your name? (optional)\n")
 
+# Input name
 print(f"Hello {name}!")
 
 
-# instructions
+# Not want instructions
 def instructions():
     while True:
         want_instructions = input(f"Would you like to read the instructions {name}? (Please enter yes or no)\n").lower()
@@ -16,6 +18,7 @@ def instructions():
             input("-Press enter to start-")
             return
 
+# Want instructions 
         elif want_instructions == "yes" or want_instructions == "y":
             print("You chose yes")
             print("Instructions:")
@@ -38,6 +41,7 @@ instructions()
 # question types
 all_question_types = ["+", "-", "x", "/"]
 
+# Global variables
 score = 0
 num1 = random.randrange(2, 20)
 num2 = random.randrange(2, 20)
@@ -45,7 +49,7 @@ question_number = 0
 question_count = 0
 final_question_count = 0
 
-
+# int_checker method
 def int_checker(question):
     while True:
         try:
@@ -55,7 +59,7 @@ def int_checker(question):
             print("Please enter a valid integer")
 
 
-# main
+# one_question method
 def one_question():
     global question_types, score, question_count
     question_types = random.choice(all_question_types)
@@ -63,6 +67,7 @@ def one_question():
     second_number = random.randrange(2, 20)
     correct_answer = 0
 
+    # Main
     if question_types == "+":
         correct_answer = first_number + second_number
     elif question_types == "-":
@@ -84,7 +89,7 @@ def one_question():
         print(f"Incorrect :( ------- The correct answer was {correct_answer}")
         question_count += 1
 
-
+# Number of questions wanted
 round_count = int_checker("How many questions would you like?\n")
 
 print("The amount of questions you chose is {}".format(round_count))
@@ -92,13 +97,15 @@ print("The amount of questions you chose is {}".format(round_count))
 for round_number in range(int(round_count)):
     one_question()
 
+# Percentage variable for end of code summary
 percentage = round(score / question_count * 100, 1)
 
-
+# End results for code
 print("---------------------------")
 print("---------RESULTS-----------")
 print("---------------------------")
 
+# Percentage and score out of number of questions inputted
 print("Your score is {}%".format(percentage))
 print("Well done!!!")
 print(f"You Got {score} / {round_count} correct!")
